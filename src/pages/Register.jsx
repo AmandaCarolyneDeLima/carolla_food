@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   ScrollView,
   Button,
+  KeyboardAvoidingView,
 } from "react-native";
 import React from "react";
 
@@ -22,55 +23,58 @@ export default function Register({ navigation }) {
     navigation.navigate("Home");
   };
 
-  const [nameRecipe, mostrarName] = React.useState(
-    "Adicione aqui o nome da receita"
-  );
-  const [category, mostrarCategory] = React.useState("Doce ou Salgado?");
-  const [ingredients, mostrarIngredients] = React.useState(
-    "Adicione os ingredientes"
-  );
-  const [preparation, mostrarPreparation] = React.useState(
-    "Adicione o modo de preparação"
-  );
+  const [nameRecipe, mostrarName] = React.useState("");
+  const [category, mostrarCategory] = React.useState("");
+  const [ingredients, mostrarIngredients] = React.useState("");
+  const [preparation, mostrarPreparation] = React.useState("");
 
   return (
-    <ScrollView style={styles.scrow}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Nome da Receita</Text>
-        <TextInput
-          style={styles.inputText}
-          mostrarName={(text) => mostrarName(text)}
-          value={nameRecipe}
-        ></TextInput>
-        <Text style={styles.title}>Categoria</Text>
-        <TextInput
-          style={styles.inputText}
-          mostrarCategory={(text) => mostrarCategory(text)}
-          value={category}
-        ></TextInput>
-        <Text style={styles.title}>Ingredientes</Text>
-        <TextInput
-          style={styles.inputText}
-          mostrarIngredients={(text) => mostrarIngredients(text)}
-          value={ingredients}
-        ></TextInput>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.scrow}
+    >
+      <ScrollView style={styles.scrow}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Nome da Receita</Text>
+          <TextInput
+            style={styles.inputText}
+            mostrarName={(text) => mostrarName(text)}
+            value={nameRecipe}
+            placeholder="Adicione aqui o nome da receita"
+          ></TextInput>
+          <Text style={styles.title}>Categoria</Text>
+          <TextInput
+            style={styles.inputText}
+            mostrarCategory={(text) => mostrarCategory(text)}
+            value={category}
+            placeholder="Doce ou Salgado?"
+          ></TextInput>
+          <Text style={styles.title}>Ingredientes</Text>
+          <TextInput
+            style={styles.inputText}
+            mostrarIngredients={(text) => mostrarIngredients(text)}
+            value={ingredients}
+            placeholder="Adicione os ingredientes"
+          ></TextInput>
 
-        <Text style={styles.title}>Modo de Preparo</Text>
-        <TextInput
-          multiline
-          numberOfLines={50}
-          maxLength={500}
-          style={styles.inputText}
-          mostrarPreparation={(text) => mostrarPreparation(text)}
-          value={preparation}
-        ></TextInput>
+          <Text style={styles.title}>Modo de Preparo</Text>
+          <TextInput
+            multiline
+            numberOfLines={50}
+            maxLength={500}
+            style={styles.inputText}
+            mostrarPreparation={(text) => mostrarPreparation(text)}
+            value={preparation}
+            placeholder="Adicione o modo de preparação"
+          ></TextInput>
 
-        <Text style={styles.title}>Tem uma foto? Adicione aqui:</Text>
-        <Button style={styles.button} title="Search" onPress={register} />
+          <Text style={styles.title}>Tem uma foto? Adicione aqui:</Text>
+          <Button style={styles.button} title="Search" onPress={register} />
 
-        <Button style={styles.button} title="Register" onPress={register} />
-      </View>
-    </ScrollView>
+          <Button style={styles.button} title="Register" onPress={register} />
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -97,7 +101,6 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     height: "100%",
     paddingBottom: 20,
-    padding: 8,
   },
   title: {
     textAlign: "left",

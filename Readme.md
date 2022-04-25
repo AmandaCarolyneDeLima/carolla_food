@@ -1,7 +1,5 @@
 ## Carolla Food
 
-teste
-
 ##### O Carolla Food tem como finalidade a inserção e visualização de receitas culinárias. Ele contará com 4 telas:
 
 ### Home
@@ -38,11 +36,15 @@ teste
 
 _Essa página conta também com um botão **Register**, para que os dados inseridos fiquem salvos na base de dados._
 
+_Ambos os botões estão apontando para a **Home** apenas para testes iniciais._
+
 ![This is a alt text.](/wireframes/Register.png "Tela para cadastrar receitas.")
 
 ### Listagem das receitas
 
 ###### Tela especifica para a listagem das receitas já inseridas no aplicativo, mostrado da seguinte forma com o nome da receita em negrito, e a categoria (se é doce ou salgada).
+
+_Essa página conta também com um botão **Return**, que quando clicado, volta para a página principal._
 
 ![This is a alt text.](/wireframes/Listing.png "Tela para listagem das receitas.")
 
