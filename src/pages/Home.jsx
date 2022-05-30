@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ScrollView } from "react-native";
 import React from "react";
 import Main from "../components/Main";
 
@@ -6,21 +6,23 @@ import Main from "../components/Main";
 
 export default function Home() {
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.text}>
-          Olá, seja muito bem vindo(a) ao Carolla Food!
-        </Text>
-        <Main></Main>
+    <ScrollView style={styles.scrow}>
+      <View style={styles.container}>
+        <View>
+          <Text style={styles.text}>
+            Olá, seja muito bem vindo(a) ao Carolla Food!
+          </Text>
+          <Main></Main>
 
-        <Text style={styles.about}>
-          Esse aplicativo tem como função facilitar o dia a dia de quem ama
-          cozinhar, assim como eu! Aqui você pode inserir receitas, bem como
-          visualizar os envios de outras pessoas. Após isso, é só se aventurar
-          na cozinha! Esperamos sua(s) receita(s) aqui!
-        </Text>
+          <Text style={styles.about}>
+            Esse aplicativo tem como função facilitar o dia a dia de quem ama
+            cozinhar, assim como eu! Aqui você pode inserir receitas, bem como
+            visualizar os envios de outras pessoas. Após isso, é só se aventurar
+            na cozinha! Esperamos sua(s) receita(s) aqui!
+          </Text>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -49,5 +51,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 200,
     fontSize: 16,
+  },
+  scrow: {
+    backgroundColor: "#DCDCDC",
+    paddingTop: 10,
+    height: "100%",
+    paddingBottom: 20,
   },
 });

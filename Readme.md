@@ -83,3 +83,17 @@ _Todas as páginas contarão com ícones especificos no Footer. As "estrelinhas"
 ### Projeto final
 
 ###### Caso precise de alguma atualização no aplicativo para a entrega final, ajustar até 23/06/2022
+
+//------------------------------------------------------------------------------------------------------//
+
+## Backlog
+
+No começo da atividade, efetuei a pequena correção da AA1, que foi incluir uma ScrollView na página principal (Home), pois o texto de baixo não apareceria em telas menores. Alterei também a forma de como é usada a SectionList, usando a header para mostrar a categoria das receitas. Foi usado a propria callback da SectionList para desenhar a header.
+
+Usei o SQLite para a persistência de dados do meu projeto. Por ser mais prático e acessível, o SQLite é mais recomendado para aplicativos desktop ou mobile mais simples (sem muitas funcionalidades e consumo de dados), e também sites mais leves e sem muitos recursos, com páginas estáticas, por exemplo. Usei apenas uma model no projeto, que foi Recipe.js.. tabela usada para o cadastro das receitas no meu aplicativo, e usei a operações mais simples, que cria receitas. Usei esse modo por ser um aplicativo mais simples, como se fosse apenas um diário do proprio usuário adicionar receitas que gostaria de fazer em casa, ou seja, não teria necessidade de edição ou exclusão.
+
+Foi usado também a ActionSheet que quando clicado em "Register", no formulário de cadastro de receitas, ela é chamada como forma de pergunta "Os dados estão corretos?", e as opções "Não, voltar e revisar." que volta para a página de Registrar, e a ultima opção "Sim, registrar receita!", que cadastra a receita e redimensiona para a página principal (Home).
+
+ 
+
+

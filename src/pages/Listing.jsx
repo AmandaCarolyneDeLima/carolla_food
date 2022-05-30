@@ -12,6 +12,8 @@ import recipes from "../services/recipes";
 
 //----------------------------------------------------------------------------------------------------------------------//
 
+//renderSectionHeader={({ section: { category } }) => (Faça algo aqui) }
+
 const Item = ({ item }) => (
   <View style={styles.item}>
     <Text>{item.id}</Text>
@@ -29,6 +31,9 @@ export default function Listing({ navigation }) {
         sections={recipes}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => <Item item={item}></Item>}
+        renderSectionHeader={({ section: { category } }) => (
+          <Text style={styles.header}>{category}</Text>
+        )}
         style={styles.scrow}
       ></SectionList>
       <Button style={styles.button} title="Return" onPress={register} />
@@ -69,5 +74,18 @@ const styles = StyleSheet.create({
   },
   button: {
     paddingBottom: 50,
+  },
+  header: {
+    fontWeight: "bold",
+    fontStyle: "italic",
+    textAlign: "center",
+    fontSize: 20,
+    //borderWidth: 1,
+    //borderRadius: 10,
+    backgroundColor: "#DCDCDC",
+    margin: 4,
+    padding: 8,
+    height: 60,
+    marginBottom: 50,
   },
 });
