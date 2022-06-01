@@ -22,6 +22,21 @@ const Item = ({ item }) => (
 );
 
 export default function Listing({ navigation }) {
+
+  //delete
+  //   Recipe.remove(1)
+  //     .then((updated) => console.log("Recipes removed: " + updated))
+  //     .catch((err) => console.log(err));
+
+  //   Recipe.remove(2)
+  //     .then((updated) => console.log("Recipes removed: " + updated))
+  //     .catch((err) => console.log(err));
+
+  //   Recipe.remove(3)
+  //     .then((updated) => console.log("Recipes removed: " + updated))
+  //     .catch((err) => console.log(err));
+
+
   const register = () => {
     navigation.navigate("Home");
   };
@@ -37,6 +52,7 @@ export default function Listing({ navigation }) {
         style={styles.scrow}
       ></SectionList>
       <Button style={styles.button} title="Return" onPress={register} />
+      {/*<Button style={styles.button} title="Delete" onPress={register} />*/}
     </SafeAreaView>
   );
 }
@@ -86,6 +102,6 @@ const styles = StyleSheet.create({
     margin: 4,
     padding: 8,
     height: 60,
-    marginBottom: 50,
+    marginBottom: 10,
   },
 });

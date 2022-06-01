@@ -1,5 +1,7 @@
 import Recipe from "../services/sqlite/Recipe";
 
+import { useActionSheet } from "@expo/react-native-action-sheet";
+
 import {
   View,
   StyleSheet,
@@ -12,32 +14,37 @@ import {
 } from "react-native";
 import React from "react";
 
-import { ActionSheetProvider } from "@expo/react-native-action-sheet";
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 //----------------------------------------------------------------------------------------------------------------------//
 
 export default function Register({ navigation }) {
-  let _actionSheet = null;
-  const onMenuSelected = (index) => {
-    console.log(index);
-  };
+  const { showActionSheetWithOptions } = useActionSheet();
 
-  const register = () => {
-    Recipe.create({
-    nome: "teste",
-    categoria: "teste",
-    ingredientes: "teste",
-    preparo: "teste",
-  })
-    .then((id) => console.log("Recipe created with id: " + id))
-    .catch((err) => console.log(err));
-    navigation.navigate("Home");
-  };
-  const search = () => {
-    navigation.navigate("Home");
+  const options = [
+    "Os dados inseridos estão corretos?",
+    "Sim, cadastrar receita!",
+    "Não, voltar e revisar!",
+  ];
+  const destructiveButtonIndex = 0;
+  const cancelButtonIndex = 2;
+
+  const handleOpen = () => {
+    showActionSheetWithOptions(
+      {
+        options,
+        cancelButtonIndex,
+        destructiveButtonIndex,
+      },
+      (buttonIndex) => {
+        console.log("Selected: ", buttonIndex);
+
+        if (buttonIndex == 1) {
+          register();
+        }
+      }
+    );
   };
 
   const [nameRecipe, setNameRecipe] = React.useState("");
@@ -45,69 +52,87 @@ export default function Register({ navigation }) {
   const [ingredients, setIngredients] = React.useState("");
   const [preparation, setPreparation] = React.useState("");
 
+  const register = () => {
+    Recipe.create({
+      nome: nameRecipe,
+      categoria: category,
+      ingredientes: ingredients,
+      preparo: preparation,
+    })
+      .then((id) => console.log("Recipe created with id: " + id))
+      .catch((err) => console.log(err));
+    navigation.navigate("Home");
+  };
+  const search = () => {
+    navigation.navigate("Home");
+  };
+
+
+  delete
+    Recipe.remove(4)
+      .then((updated) => console.log("Recipes removed: " + updated))
+      .catch((err) => console.log(err));
+
+    Recipe.remove(5)
+      .then((updated) => console.log("Recipes removed: " + updated))
+      .catch((err) => console.log(err));
+
+    Recipe.remove(6)
+      .then((updated) => console.log("Recipes removed: " + updated))
+      .catch((err) => console.log(err));
+
+
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.scrow}
     >
       <ScrollView style={styles.scrow}>
-        <ActionSheetProvider
-          ref={(ref) => (_actionSheet = ref)}
-          options={[
-            "Os dados estão corretos?",
-            ["Não, voltar e revisar."],
-            ["Sim, registrar receita!"],
-          ]}
-          onPress={(index) => {
-            onMenuSelected(index);
-          }}
-        >
+        <View style={styles.container}>
+          <Text style={styles.title}>Nome da Receita</Text>
+          <TextInput
+            style={styles.inputText}
+            value={nameRecipe}
+            onChangeText={setNameRecipe}
+            placeholder="Adicione aqui o nome da receita"
+          ></TextInput>
+          <Text style={styles.title}>Categoria</Text>
+          <TextInput
+            style={styles.inputText}
+            value={category}
+            onChangeText={setCategory}
+            placeholder="Doce ou Salgado?"
+          ></TextInput>
+          <Text style={styles.title}>Ingredientes</Text>
+          <TextInput
+            style={styles.inputText}
+            value={ingredients}
+            onChangeText={setIngredients}
+            placeholder="Adicione os ingredientes"
+          ></TextInput>
 
-          <View style={styles.container}>
-            <Text style={styles.title}>Nome da Receita</Text>
-            <TextInput
-              style={styles.inputText}
-              value={nameRecipe}
-              onTextChange={setNameRecipe}
-              placeholder="Adicione aqui o nome da receita"
-            ></TextInput>
-            <Text style={styles.title}>Categoria</Text>
-            <TextInput
-              style={styles.inputText}
-              value={category}
-              onTextChange={setCategory}
-              placeholder="Doce ou Salgado?"
-            ></TextInput>
-            <Text style={styles.title}>Ingredientes</Text>
-            <TextInput
-              style={styles.inputText}
-              value={ingredients}
-              onTextChange={setIngredients}
-              placeholder="Adicione os ingredientes"
-            ></TextInput>
+          <Text style={styles.title}>Modo de Preparo</Text>
+          <TextInput
+            multiline
+            numberOfLines={50}
+            maxLength={500}
+            style={styles.inputText}
+            value={preparation}
+            onChangeText={setPreparation}
+            placeholder="Adicione o modo de preparação"
+          ></TextInput>
 
-            <Text style={styles.title}>Modo de Preparo</Text>
-            <TextInput
-              multiline
-              numberOfLines={50}
-              maxLength={500}
-              style={styles.inputText}
-              value={preparation}
-              onTextChange={setPreparation}
-              placeholder="Adicione o modo de preparação"
-            ></TextInput>
+          <Text style={styles.title}>Tem uma foto? Adicione aqui:</Text>
+          <Button style={styles.button} title="Search" onPress={register} />
 
-            <Text style={styles.title}>Tem uma foto? Adicione aqui:</Text>
-            <Button style={styles.button} title="Search" onPress={register} />
-
-            {/* <Button style={styles.button} title="Register" onPress={register} /> */}
-            <Button
-              style={styles.button}
-              title="Register"
-              onPress={() => _actionSheet.show()}
-            ></Button>
-          </View>
-        </ActionSheetProvider>
+          {/* <Button style={styles.button} title="Register" onPress={register} /> */}
+          <Button
+            style={styles.button}
+            title="Register"
+            onPress={handleOpen}
+          ></Button>
+        </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
