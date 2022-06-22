@@ -36,25 +36,36 @@ export default function Listing({ navigation }) {
   // Efeitos
 
   useEffect(() => {
-    Recipe.all().then((data) => {
-      // console.log(data);
-      // console.log(listToSectionList(data));
-      setRecipes(listToSectionList(data));
+    refreshList();
+
+    navigation.addListener("tabPress", (e) => {
+      refreshList();
     });
   }, []);
 
   // Callbacks
 
+  const refreshList = () => {
+    Recipe.all().then((data) => {
+      setRecipes(listToSectionList(data));
+    });
+  };
+
   const register = () => {
     navigation.navigate("Home");
   };
 
-  const description = () => {
+  const description = (item) => {
     navigation.navigate("Recipe");
   };
 
-  const remove = () => {
-    navigation.navigate("Home");
+  const remove = (item) => {
+    Recipe.remove(item.id)
+      .then((updated) => {
+        console.log("Recipes removed: " + updated);
+        refreshList();
+      })
+      .catch((err) => console.log(err));
   };
 
   // Renders e Componentes Internos
