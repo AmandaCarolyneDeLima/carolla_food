@@ -10,10 +10,9 @@ import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import api from "./src/services/api";
 //----------------------------------------------------------------------------------------------------------------------//
 
-
 //----------------------------------------------------------------------------------------------------------------------//
 //i18n
-// import I18n from 'react-native-i18n';
+// import I18n from "react-native-i18n";
 // // OR const I18n = require('react-native-i18n').default
 
 // class Demo extends React.Component {
@@ -34,6 +33,8 @@ import api from "./src/services/api";
 //   },
 // };
 
+import i18n from "./src/services/lang";
+
 //----------------------------------------------------------------------------------------------------------------------//
 
 const printRecipe = (recipe) => {
@@ -47,6 +48,8 @@ export default function App() {
   //all
   Recipe.all().then((recipes) => recipes.forEach((r) => printRecipe(r)));
   //----------------------------------------------------------------------------------------------------------------------//
+
+  // console.log(i18n.t("welcome")); // Exemplo de uso do "t"
 
   return (
     <ActionSheetProvider>
