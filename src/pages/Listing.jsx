@@ -15,15 +15,6 @@ import listToSectionList from "../helpers/listToSectionList";
 
 //renderSectionHeader={({ section: { category } }) => (Faça algo aqui) }
 
-const Item = ({ item }) => (
-  <View style={styles.item}>
-    <Text>{item.id}</Text>
-    <Text style={styles.id}>{item.recipe}</Text>
-    <Button style={styles.button} title="Descrição" onPress={ () => description(item)}/>
-    <Button style={styles.button} title="Deletar" onPress={ () => remove(item)}/>
-  </View>
-);
-
 export default function Listing({ navigation }) {
   //delete
   //   Recipe.remove(1)
@@ -38,7 +29,11 @@ export default function Listing({ navigation }) {
   //     .then((updated) => console.log("Recipes removed: " + updated))
   //     .catch((err) => console.log(err));
 
+  // Estados
+
   const [recipes, setRecipes] = useState([]);
+
+  // Efeitos
 
   useEffect(() => {
     Recipe.all().then((data) => {
@@ -47,6 +42,8 @@ export default function Listing({ navigation }) {
       setRecipes(listToSectionList(data));
     });
   }, []);
+
+  // Callbacks
 
   const register = () => {
     navigation.navigate("Home");
@@ -60,14 +57,31 @@ export default function Listing({ navigation }) {
     navigation.navigate("Home");
   };
 
+  // Renders e Componentes Internos
+
+  const Item = ({ item }) => (
+    <View style={styles.item}>
+      <Text>{item.id}</Text>
+      <Text style={styles.id}>{item.recipe}</Text>
+      <Button
+        style={styles.button}
+        title="Descrição"
+        onPress={() => description(item)}
+      />
+      <Button
+        style={styles.button}
+        title="Deletar"
+        onPress={() => remove(item)}
+      />
+    </View>
+  );
+
   return (
     <SafeAreaView style={styles.container}>
       <SectionList
         sections={recipes}
-        keyExtractor={(item) => item.id.toString()}        
-
-         renderItem={({ item }) => <Item item={item}></Item>}
-
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <Item item={item}></Item>}
         renderSectionHeader={({ section: { category } }) => (
           <Text style={styles.header}>{category}</Text>
         )}
