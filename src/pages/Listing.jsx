@@ -6,23 +6,16 @@ import {
   SafeAreaView,
   Button,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import recipes from "../services/recipes";
+import Recipe from "../services/sqlite/Recipe";
+import listToSectionList from "../helpers/listToSectionList";
 
 //----------------------------------------------------------------------------------------------------------------------//
 
 //renderSectionHeader={({ section: { category } }) => (Faça algo aqui) }
 
-const Item = ({ item }) => (
-  <View style={styles.item}>
-    <Text>{item.id}</Text>
-    <Text style={styles.id}>{item.recipe}</Text>
-  </View>
-);
-
 export default function Listing({ navigation }) {
-
   //delete
   //   Recipe.remove(1)
   //     .then((updated) => console.log("Recipes removed: " + updated))
@@ -36,10 +29,60 @@ export default function Listing({ navigation }) {
   //     .then((updated) => console.log("Recipes removed: " + updated))
   //     .catch((err) => console.log(err));
 
+  // Estados
 
-  const register = () => {
-    navigation.navigate("Home");
+  const [recipes, setRecipes] = useState([]);
+
+  // Efeitos
+
+  useEffect(() => {
+    refreshList();
+
+    navigation.addListener("tabPress", (e) => {
+      refreshList();
+    });
+  }, []);
+
+  // Callbacks
+
+  const refreshList = () => {
+    Recipe.all().then((data) => {
+      setRecipes(listToSectionList(data));
+    });
   };
+
+  const description = (item) => {
+    navigation.navigate("Recipe", { item });
+  };
+
+  const remove = (item) => {
+    Recipe.remove(item.id)
+      .then((updated) => {
+        console.log("Recipes removed: " + updated);
+        refreshList();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // Renders e Componentes Internos
+
+  const Item = ({ item }) => (
+    <View style={styles.item}>
+      <Text>{item.id}</Text>
+      <Text style={styles.id}>{item.recipe}</Text>
+      <Button
+        style={styles.button}
+        title="Descrição"
+        onPress={() => description(item)}
+      />
+      <Button
+        style={styles.button}
+        title="Deletar"
+        onPress={() => remove(item)}
+      />
+    </View>
+  );
+
   return (
     <SafeAreaView style={styles.container}>
       <SectionList
@@ -51,8 +94,6 @@ export default function Listing({ navigation }) {
         )}
         style={styles.scrow}
       ></SectionList>
-      <Button style={styles.button} title="Return" onPress={register} />
-      {/*<Button style={styles.button} title="Delete" onPress={register} />*/}
     </SafeAreaView>
   );
 }
@@ -74,7 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#DCDCDC",
     margin: 4,
     padding: 8,
-    height: 60,
+    height: 120,
     marginBottom: 50,
   },
   scrow: {
@@ -87,6 +128,7 @@ const styles = StyleSheet.create({
   id: {
     fontWeight: "bold",
     fontStyle: "italic",
+    fontSize: 20,
   },
   button: {
     paddingBottom: 50,

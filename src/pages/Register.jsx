@@ -68,20 +68,18 @@ export default function Register({ navigation }) {
   };
 
 
-  delete
-    Recipe.remove(4)
-      .then((updated) => console.log("Recipes removed: " + updated))
-      .catch((err) => console.log(err));
+  // delete
+  //   Recipe.remove(4)
+  //     .then((updated) => console.log("Recipes removed: " + updated))
+  //     .catch((err) => console.log(err));
 
-    Recipe.remove(5)
-      .then((updated) => console.log("Recipes removed: " + updated))
-      .catch((err) => console.log(err));
+  //   Recipe.remove(5)
+  //     .then((updated) => console.log("Recipes removed: " + updated))
+  //     .catch((err) => console.log(err));
 
-    Recipe.remove(6)
-      .then((updated) => console.log("Recipes removed: " + updated))
-      .catch((err) => console.log(err));
-
-
+  //   Recipe.remove(6)
+  //     .then((updated) => console.log("Recipes removed: " + updated))
+  //     .catch((err) => console.log(err));
 
   return (
     <KeyboardAvoidingView
@@ -123,8 +121,8 @@ export default function Register({ navigation }) {
             placeholder="Adicione o modo de preparação"
           ></TextInput>
 
-          <Text style={styles.title}>Tem uma foto? Adicione aqui:</Text>
-          <Button style={styles.button} title="Search" onPress={register} />
+          {/*<Text style={styles.title}>Tem uma foto? Adicione aqui:</Text>
+          <Button style={styles.button} title="Search" onPress={register} />*/}
 
           {/* <Button style={styles.button} title="Register" onPress={register} /> */}
           <Button
@@ -158,7 +156,7 @@ const styles = StyleSheet.create({
   },
   scrow: {
     backgroundColor: "#DCDCDC",
-    paddingTop: 10,
+    paddingTop: 25,
     height: "100%",
     paddingBottom: 20,
   },
