@@ -6,9 +6,10 @@ import {
   SafeAreaView,
   Button,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import recipes from "../services/recipes";
+import Recipe from "../services/sqlite/Recipe";
+import listToSectionList from "../helpers/listToSectionList";
 
 //----------------------------------------------------------------------------------------------------------------------//
 
@@ -18,11 +19,12 @@ const Item = ({ item }) => (
   <View style={styles.item}>
     <Text>{item.id}</Text>
     <Text style={styles.id}>{item.recipe}</Text>
+    <Button style={styles.button} title="Descrição" onPress={ () => description(item)}/>
+    <Button style={styles.button} title="Deletar" onPress={ () => remove(item)}/>
   </View>
 );
 
 export default function Listing({ navigation }) {
-
   //delete
   //   Recipe.remove(1)
   //     .then((updated) => console.log("Recipes removed: " + updated))
@@ -36,23 +38,41 @@ export default function Listing({ navigation }) {
   //     .then((updated) => console.log("Recipes removed: " + updated))
   //     .catch((err) => console.log(err));
 
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    Recipe.all().then((data) => {
+      // console.log(data);
+      // console.log(listToSectionList(data));
+      setRecipes(listToSectionList(data));
+    });
+  }, []);
 
   const register = () => {
     navigation.navigate("Home");
   };
+
+  const description = () => {
+    navigation.navigate("Recipe");
+  };
+
+  const remove = () => {
+    navigation.navigate("Home");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <SectionList
         sections={recipes}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <Item item={item}></Item>}
+        keyExtractor={(item) => item.id.toString()}        
+
+         renderItem={({ item }) => <Item item={item}></Item>}
+
         renderSectionHeader={({ section: { category } }) => (
           <Text style={styles.header}>{category}</Text>
         )}
         style={styles.scrow}
       ></SectionList>
-      <Button style={styles.button} title="Return" onPress={register} />
-      {/*<Button style={styles.button} title="Delete" onPress={register} />*/}
     </SafeAreaView>
   );
 }
@@ -74,7 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#DCDCDC",
     margin: 4,
     padding: 8,
-    height: 60,
+    height: 120,
     marginBottom: 50,
   },
   scrow: {
@@ -87,6 +107,7 @@ const styles = StyleSheet.create({
   id: {
     fontWeight: "bold",
     fontStyle: "italic",
+    fontSize: 20,
   },
   button: {
     paddingBottom: 50,

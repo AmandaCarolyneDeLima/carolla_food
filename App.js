@@ -6,7 +6,35 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 
-// //----------------------------------------------------------------------------------------------------------------------//
+//----------------------------------------------------------------------------------------------------------------------//
+import api from "./src/services/api";
+//----------------------------------------------------------------------------------------------------------------------//
+
+
+//----------------------------------------------------------------------------------------------------------------------//
+//i18n
+// import I18n from 'react-native-i18n';
+// // OR const I18n = require('react-native-i18n').default
+
+// class Demo extends React.Component {
+//   render() {
+//     return <Text>{I18n.t('greeting')}</Text>;
+//   }
+// }
+
+// // Enable fallbacks if you want `en-US` and `en-GB` to fallback to `en`
+// I18n.fallbacks = true;
+
+// I18n.translations = {
+//   en: {
+//     greeting: 'Olá!',
+//   },
+//   'en-GB': {
+//     greeting: 'Olá, do Reino Unido!',
+//   },
+// };
+
+//----------------------------------------------------------------------------------------------------------------------//
 
 const printRecipe = (recipe) => {
   console.log(
@@ -15,91 +43,10 @@ const printRecipe = (recipe) => {
 };
 
 export default function App() {
-  //   //-------------------------------------------------------------------------------------------
-
-  //   //forced error catch
-  //   Recipe.find(-1)
-  //     .then((recipe) => printRecipe(recipe))
-  //     .catch((err) => console.log(err));
-
-  //   //-------------------------------------------------------------------------------------------
-
-  //   //create
-  //   Recipe.create({
-  //     nome: "teste",
-  //     categoria: "teste",
-  //     ingredientes: "teste",
-  //     preparo: "teste",
-  //   })
-  //     .then((id) => console.log("Recipe created with id: " + id))
-  //     .catch((err) => console.log(err));
-
-  //   Recipe.create({
-  //     nome: "teste1",
-  //     categoria: "teste1",
-  //     ingredientes: "teste1",
-  //     preparo: "teste1",
-  //   })
-  //     .then((id) => console.log("Recipe created with id: " + id))
-  //     .catch((err) => console.log(err));
-
-  //   Recipe.create({
-  //     nome: "teste2",
-  //     categoria: "teste2",
-  //     ingredientes: "teste2",
-  //     preparo: "teste2",
-  //   })
-  //     .then((id) => console.log("Recipe created with id: " + id))
-  //     .catch((err) => console.log(err));
-
-  //   //-------------------------------------------------------------------------------------------
-
-  //   //search id=1
-  //   Recipe.find(1)
-  //     .then((recipe) => printRecipe(recipe))
-  //     .catch((err) => console.log(err));
-
-  //   //-------------------------------------------------------------------------------------------
-
-  //   //search nome=bolo
-  //   Recipe.findByNome("teste")
-  //     .then((recipes) => console.log(recipes))
-  //     .catch((err) => console.log(err));
-
-  //   //-------------------------------------------------------------------------------------------
-
-  //   //update
-  //   Recipe.update(1, {
-  //     nome: "teste3",
-  //     categoria: "teste3",
-  //     ingredientes: "teste3",
-  //     preparo: "teste3",
-  //   })
-  //     .then((updated) => console.log("Recipes updated: " + updated))
-  //     .catch((err) => console.log(err));
-
-  //   //-------------------------------------------------------------------------------------------
-
-  //   //all
-        Recipe.all().then((recipes) => recipes.forEach((r) => printRecipe(r)));
-
-  //   //-------------------------------------------------------------------------------------------
-
-  //   //delete
-  //   Recipe.remove(1)
-  //     .then((updated) => console.log("Recipes removed: " + updated))
-  //     .catch((err) => console.log(err));
-
-  //   Recipe.remove(2)
-  //     .then((updated) => console.log("Recipes removed: " + updated))
-  //     .catch((err) => console.log(err));
-
-  //   Recipe.remove(3)
-  //     .then((updated) => console.log("Recipes removed: " + updated))
-  //     .catch((err) => console.log(err));
-
-  //   //forced empty array (all=[])
-  //   Recipe.all().then((recipes) => console.log(recipes));
+  //----------------------------------------------------------------------------------------------------------------------//
+  //all
+  Recipe.all().then((recipes) => recipes.forEach((r) => printRecipe(r)));
+  //----------------------------------------------------------------------------------------------------------------------//
 
   return (
     <ActionSheetProvider>
@@ -107,13 +54,6 @@ export default function App() {
     </ActionSheetProvider>
   );
 }
-///   return (
-//     <View style={styles.container}>
-//       <Text>(Check Console)</Text>
-//       <Routes />
-//     </View>
-//   );
-// }
 
 //----------------------------------------------------------------------------------------------------------------------//
 

@@ -5,7 +5,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 import Home from "./pages/Home";
 import Listing from "./pages/Listing";
-import Recipe from "./pages/Recipe";
+import RecipeDetail from "./pages/RecipeDetail";
 import Register from "./pages/Register";
 
 const Tab = createBottomTabNavigator();
@@ -67,7 +67,7 @@ export default function Routes() {
 
         <Tab.Screen
           name="Recipe"
-          component={Recipe}
+          component={RecipeDetail}
           // options={{
           //   tabBarLabel: "Listing",
           //   tabBarIcon: ({ color, size }) => (
