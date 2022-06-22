@@ -20,23 +20,27 @@ import bolo from "../../assets/bolo.webp";
 //   </View>
 // );
 
-export default function RecipeDetail({ navigation }) {
-  const register = () => {
-    navigation.navigate("Home");
-  };
-  const description = () => {
-    navigation.navigate("Recipe");
-  };
-  const remove = () => {
-    navigation.navigate("Home");
-  };
+export default function RecipeDetail({ navigation, route }) {
+  const { item } = route.params;
 
+  console.log(item);
+
+  const returnToListing = () => {
+    navigation.navigate("Listing");
+  };
 
   return (
     <ScrollView style={styles.scrow}>
       <View style={styles.container}>
-        
-        <Button style={styles.button} title="Return" onPress={register} />
+        <Text>Id:{item.id}</Text>
+
+        {/* Criar elementos Text para mostrar o resto dos atributos do item*/}
+
+        <Button
+          style={styles.button}
+          title="Return"
+          onPress={returnToListing}
+        />
       </View>
     </ScrollView>
   );

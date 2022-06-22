@@ -51,12 +51,8 @@ export default function Listing({ navigation }) {
     });
   };
 
-  const register = () => {
-    navigation.navigate("Home");
-  };
-
   const description = (item) => {
-    navigation.navigate("Recipe");
+    navigation.navigate("Recipe", { item });
   };
 
   const remove = (item) => {
