@@ -15,10 +15,9 @@ export default function Home() {
           <Main></Main>
 
           <Text style={styles.about}>
-            Esse aplicativo tem como função facilitar o dia a dia de quem ama
-            cozinhar, assim como eu! Aqui você pode inserir receitas, bem como
-            visualizar os envios de outras pessoas. Após isso, é só se aventurar
-            na cozinha! Esperamos sua(s) receita(s) aqui!
+            Esse aplicativo tem como função facilitar o dia a dia de quem ama cozinhar, 
+            assim como eu! Aqui você pode inserir receitas e visualizar os dados inseridos. 
+            Após isso, é só se aventurar na cozinha! Esperamos sua(s) receita(s) aqui!
           </Text>
         </View>
       </View>

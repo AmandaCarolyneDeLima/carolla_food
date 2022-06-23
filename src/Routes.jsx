@@ -35,45 +35,21 @@ export default function Routes() {
         <Tab.Screen
           name="Home"
           component={Home}
-          // options={{
-          //   tabBarLabel: "Home",
-          //   tabBarIcon: ({ color, size }) => (
-          //     <MaterialIcons name="home" size={24} color="black" />
-          //   ),
-          // }}
         ></Tab.Screen>
 
         <Tab.Screen
           name="Register"
           component={Register}
-          // options={{
-          //   tabBarLabel: "Register",
-          //   tabBarIcon: ({ color, size }) => (
-          //     <MaterialIcons name="add-box" size={28} color="black" />
-          //   ),
-          // }}
         ></Tab.Screen>
 
         <Tab.Screen
           name="Listing"
           component={Listing}
-          // options={{
-          //   tabBarLabel: "Listing",
-          //   tabBarIcon: ({ color, size }) => (
-          //     <MaterialIcons name="filter-list" size={28} color="black" />
-          //   ),
-          // }}
         ></Tab.Screen>
 
         <Tab.Screen
           name="Recipe"
           component={RecipeDetail}
-          // options={{
-          //   tabBarLabel: "Listing",
-          //   tabBarIcon: ({ color, size }) => (
-          //     <MaterialIcons name="filter-list" size={28} color="black" />
-          //   ),
-          // }}
         ></Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>

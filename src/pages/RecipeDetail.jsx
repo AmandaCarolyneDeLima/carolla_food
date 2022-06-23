@@ -12,14 +12,6 @@ import bolo from "../../assets/bolo.webp";
 
 //----------------------------------------------------------------------------------------------------------------------//
 
-// const Item = ({ item }) => (
-//   <View style={styles.item}>
-//     <Text>{item.id}</Text>
-//     <Text style={styles.id}>{item.recipe}</Text>
-//     <Text style={styles.id}>{item.recipe}</Text>
-//   </View>
-// );
-
 export default function RecipeDetail({ navigation, route }) {
   const { item } = route.params;
 
@@ -32,9 +24,12 @@ export default function RecipeDetail({ navigation, route }) {
   return (
     <ScrollView style={styles.scrow}>
       <View style={styles.container}>
-        <Text>Id:{item.id}</Text>
-
-        {/* Criar elementos Text para mostrar o resto dos atributos do item*/}
+        <Text style={styles.id}>Id:{item.id}</Text>
+        <Text style={styles.recipe}>{item.recipe}</Text>
+        <Text style={styles.ingredients}>Ingrendientes: {item.ingredients}</Text>
+        <Text style={styles.preparation}>Modo de preparo: {item.preparation}</Text>
+        <Text style={styles.espaco}></Text>
+        <Text style={styles.espaco}></Text>
 
         <Button
           style={styles.button}
@@ -80,10 +75,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   scrow: {
+    borderWidth: 2,
+    borderRadius: 10,
     backgroundColor: "#DCDCDC",
-    paddingTop: 10,
-    height: "100%",
-    paddingBottom: 20,
+    margin: 5,
+    padding: 8,
+    height: 150,
+    marginBottom: 1,
   },
   explanation: {
     fontStyle: "italic",
@@ -98,4 +96,47 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 200,
   },
+  id: {
+    textAlign: "center",
+    marginTop: 50,
+    fontSize: 18,
+    fontWeight: "bold",
+    fontStyle: "italic",
+    textAlign: "right",
+  },
+  recipe: {
+    textAlign: "center",
+    marginTop: 50,
+    fontSize: 28,
+    fontWeight: "bold",
+    fontStyle: "italic",
+    justifyContent: "space-between",
+    padding: 8,
+    paddingTop: 2,
+  },
+  ingredients: {
+    textAlign: "center",
+    marginTop: 80,
+    fontSize: 20,
+    // fontWeight: "bold",
+    fontStyle: "italic",
+    justifyContent: "space-between",
+    padding: 8,
+    paddingTop: 2,
+    textAlign: "left",
+  },
+  preparation: {
+    textAlign: "center",
+    marginTop: 80,
+    fontSize: 20,
+    // fontWeight: "bold",
+    fontStyle: "italic",
+    justifyContent: "space-between",
+    padding: 8,
+    paddingTop: 2,
+    textAlign: "left",
+  },
+  espaco: {
+    paddingTop: 100,
+  }
 });

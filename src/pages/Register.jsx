@@ -67,20 +67,6 @@ export default function Register({ navigation }) {
     navigation.navigate("Home");
   };
 
-
-  // delete
-  //   Recipe.remove(4)
-  //     .then((updated) => console.log("Recipes removed: " + updated))
-  //     .catch((err) => console.log(err));
-
-  //   Recipe.remove(5)
-  //     .then((updated) => console.log("Recipes removed: " + updated))
-  //     .catch((err) => console.log(err));
-
-  //   Recipe.remove(6)
-  //     .then((updated) => console.log("Recipes removed: " + updated))
-  //     .catch((err) => console.log(err));
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -120,11 +106,6 @@ export default function Register({ navigation }) {
             onChangeText={setPreparation}
             placeholder="Adicione o modo de preparação"
           ></TextInput>
-
-          {/*<Text style={styles.title}>Tem uma foto? Adicione aqui:</Text>
-          <Button style={styles.button} title="Search" onPress={register} />*/}
-
-          {/* <Button style={styles.button} title="Register" onPress={register} /> */}
           <Button
             style={styles.button}
             title="Register"

@@ -13,21 +13,8 @@ import listToSectionList from "../helpers/listToSectionList";
 
 //----------------------------------------------------------------------------------------------------------------------//
 
-//renderSectionHeader={({ section: { category } }) => (Faça algo aqui) }
 
 export default function Listing({ navigation }) {
-  //delete
-  //   Recipe.remove(1)
-  //     .then((updated) => console.log("Recipes removed: " + updated))
-  //     .catch((err) => console.log(err));
-
-  //   Recipe.remove(2)
-  //     .then((updated) => console.log("Recipes removed: " + updated))
-  //     .catch((err) => console.log(err));
-
-  //   Recipe.remove(3)
-  //     .then((updated) => console.log("Recipes removed: " + updated))
-  //     .catch((err) => console.log(err));
 
   // Estados
 
@@ -138,8 +125,6 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     textAlign: "center",
     fontSize: 20,
-    //borderWidth: 1,
-    //borderRadius: 10,
     backgroundColor: "#DCDCDC",
     margin: 4,
     padding: 8,
