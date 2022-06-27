@@ -13,9 +13,7 @@ import listToSectionList from "../helpers/listToSectionList";
 
 //----------------------------------------------------------------------------------------------------------------------//
 
-
 export default function Listing({ navigation }) {
-
   // Estados
 
   const [recipes, setRecipes] = useState([]);

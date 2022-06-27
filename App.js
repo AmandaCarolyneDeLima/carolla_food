@@ -22,7 +22,8 @@ export default function App() {
   Recipe.all().then((recipes) => recipes.forEach((r) => printRecipe(r)));
   //----------------------------------------------------------------------------------------------------------------------//
 
-  // console.log(i18n.t("welcome")); // Exemplo de uso do "t"
+  console.log(i18n.t("welcome2"));
+  console.log(i18n.t("textMain"));
 
   return (
     <ActionSheetProvider>

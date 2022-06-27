@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "carolla_food_pdm",
+    "name": "Carolla Food",
     "slug": "carolla_food_pdm",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,13 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.apppdm.carollafood"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#FFFFFF",
+      },
+      "package": "com.apppdm.carollafood"
     },
     "web": {
       "favicon": "./assets/favicon.png"

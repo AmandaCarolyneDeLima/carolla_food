@@ -8,6 +8,8 @@ import Listing from "./pages/Listing";
 import RecipeDetail from "./pages/RecipeDetail";
 import Register from "./pages/Register";
 
+//----------------------------------------------------------------------------------------------------------------------//
+
 const Tab = createBottomTabNavigator();
 
 export default function Routes() {
@@ -32,25 +34,13 @@ export default function Routes() {
           tabBarInactiveTintColor: "black",
         })}
       >
-        <Tab.Screen
-          name="Home"
-          component={Home}
-        ></Tab.Screen>
+        <Tab.Screen name="Home" component={Home}></Tab.Screen>
 
-        <Tab.Screen
-          name="Register"
-          component={Register}
-        ></Tab.Screen>
+        <Tab.Screen name="Register" component={Register}></Tab.Screen>
 
-        <Tab.Screen
-          name="Listing"
-          component={Listing}
-        ></Tab.Screen>
+        <Tab.Screen name="Listing" component={Listing}></Tab.Screen>
 
-        <Tab.Screen
-          name="Recipe"
-          component={RecipeDetail}
-        ></Tab.Screen>
+        <Tab.Screen name="Recipe" component={RecipeDetail}></Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );
