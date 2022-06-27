@@ -32,14 +32,6 @@
 
 - Permite adicionar o passo a passo para aquela receita ser realizada.
 
-##### Tem uma foto? Adicione aqui:
-
-- Tem um botão **Search**, que mais tarde será usado para inserção de foto da receita.
-
-_Essa página conta também com um botão **Register**, para que os dados inseridos fiquem salvos na base de dados._
-
-_Ambos os botões estão apontando para a **Home** apenas para testes iniciais._
-
 ![This is a alt text.](wireframes/Register.png "Tela para cadastrar receitas.")
 
 ### Listagem das receitas
@@ -114,3 +106,31 @@ _Todas as páginas contarão com ícones especificos no Footer. As "estrelinhas"
 ## 7
 
 ### Cronograma ajustado!
+
+## Resultado Final (Capturas de Tela)
+
+### Icone do app:
+
+![This is a alt text.](captures/Icon.jpg "Icon.")
+
+### Tela Principal:
+
+![This is a alt text.](captures/Home.jpg "Home.")
+
+### Registro de Receitas:
+
+![This is a alt text.](captures/Register.jpg "Register.")
+
+### Action Sheet:
+
+![This is a alt text.](captures/ActionSheet.jpg "ActionSheet.")
+
+### Listagem das Receitas:
+
+![This is a alt text.](captures/Listing.jpg "Listing.")
+
+![This is a alt text.](captures/Listing2.jpg "Listing.")
+
+### Descrição de receitas:
+
+![This is a alt text.](captures/Description.jpg "Description.")
