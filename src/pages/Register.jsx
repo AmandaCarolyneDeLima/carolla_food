@@ -17,15 +17,18 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import i18n from "../services/lang";
+
+
 //----------------------------------------------------------------------------------------------------------------------//
 
 export default function Register({ navigation }) {
   const { showActionSheetWithOptions } = useActionSheet();
 
   const options = [
-    "Os dados inseridos estão corretos?",
-    "Sim, cadastrar receita!",
-    "Não, voltar e revisar!",
+    i18n.t("options1"),
+    i18n.t("options2"),
+    i18n.t("options3"),
   ];
   const destructiveButtonIndex = 0;
   const cancelButtonIndex = 2;
@@ -74,29 +77,29 @@ export default function Register({ navigation }) {
     >
       <ScrollView style={styles.scrow}>
         <View style={styles.container}>
-          <Text style={styles.title}>Nome da Receita</Text>
+          <Text style={styles.title}>{i18n.t("nameRecipe")}</Text>
           <TextInput
             style={styles.inputText}
             value={nameRecipe}
             onChangeText={setNameRecipe}
-            placeholder="Adicione aqui o nome da receita"
+            placeholder={i18n.t("placeholderName")}
           ></TextInput>
-          <Text style={styles.title}>Categoria</Text>
+          <Text style={styles.title}>{i18n.t("category")}</Text>
           <TextInput
             style={styles.inputText}
             value={category}
             onChangeText={setCategory}
-            placeholder="Doce ou Salgado?"
+            placeholder={i18n.t("placeholderCategory")}
           ></TextInput>
-          <Text style={styles.title}>Ingredientes</Text>
+          <Text style={styles.title}>{i18n.t("ingrendients")}</Text>
           <TextInput
             style={styles.inputText}
             value={ingredients}
             onChangeText={setIngredients}
-            placeholder="Adicione os ingredientes"
+            placeholder={i18n.t("placeholderIngredients")}
           ></TextInput>
 
-          <Text style={styles.title}>Modo de Preparo</Text>
+          <Text style={styles.title}>{i18n.t("preparation")}</Text>
           <TextInput
             multiline
             numberOfLines={50}
@@ -104,11 +107,11 @@ export default function Register({ navigation }) {
             style={styles.inputText}
             value={preparation}
             onChangeText={setPreparation}
-            placeholder="Adicione o modo de preparação"
+            placeholder={i18n.t("placeholderPreparation")}
           ></TextInput>
           <Button
             style={styles.button}
-            title="Register"
+            title={i18n.t("register")}
             onPress={handleOpen}
           ></Button>
         </View>

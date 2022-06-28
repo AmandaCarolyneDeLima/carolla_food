@@ -11,6 +11,9 @@ import React, { useEffect, useState } from "react";
 import Recipe from "../services/sqlite/Recipe";
 import listToSectionList from "../helpers/listToSectionList";
 
+import i18n from "../services/lang";
+
+
 //----------------------------------------------------------------------------------------------------------------------//
 
 export default function Listing({ navigation }) {
@@ -57,12 +60,12 @@ export default function Listing({ navigation }) {
       <Text style={styles.id}>{item.recipe}</Text>
       <Button
         style={styles.button}
-        title="Descrição"
+        title={i18n.t("description")}
         onPress={() => description(item)}
       />
       <Button
         style={styles.button}
-        title="Deletar"
+        title={i18n.t("delete")}
         onPress={() => remove(item)}
       />
     </View>

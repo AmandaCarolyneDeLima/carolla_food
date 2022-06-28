@@ -2,6 +2,9 @@ import { View, StyleSheet, Text, ScrollView } from "react-native";
 import React from "react";
 import Main from "../components/Main";
 
+//import i18n from "./src/services/lang";
+import i18n from "../services/lang";
+
 //----------------------------------------------------------------------------------------------------------------------//
 
 export default function Home() {
@@ -9,15 +12,11 @@ export default function Home() {
     <ScrollView style={styles.scrow}>
       <View style={styles.container}>
         <View>
-          <Text style={styles.text}>
-            Olá, seja muito bem vindo(a) ao Carolla Food!
-          </Text>
+          <Text style={styles.text}>{i18n.t("welcome2")}</Text>
           <Main></Main>
 
           <Text style={styles.about}>
-            Esse aplicativo tem como função facilitar o dia a dia de quem ama cozinhar, 
-            assim como eu! Aqui você pode inserir receitas e visualizar os dados inseridos. 
-            Após isso, é só se aventurar na cozinha! Esperamos sua(s) receita(s) aqui!
+            {i18n.t("textMain")}
           </Text>
         </View>
       </View>

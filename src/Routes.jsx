@@ -8,6 +8,8 @@ import Listing from "./pages/Listing";
 import RecipeDetail from "./pages/RecipeDetail";
 import Register from "./pages/Register";
 
+import i18n from "./services/lang";
+
 //----------------------------------------------------------------------------------------------------------------------//
 
 const Tab = createBottomTabNavigator();
@@ -20,11 +22,11 @@ export default function Routes() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === "Home") {
+            if (route.name === i18n.t("home")) {
               iconName = "home";
-            } else if (route.name === "Register") {
+            } else if (route.name === i18n.t("register")) {
               iconName = "add-box";
-            } else if (route.name === "Listing") {
+            } else if (route.name === i18n.t("listing")) {
               iconName = "list";
             }
             return <MaterialIcons name={iconName} size={size} color={color} />;
@@ -34,13 +36,13 @@ export default function Routes() {
           tabBarInactiveTintColor: "black",
         })}
       >
-        <Tab.Screen name="Home" component={Home}></Tab.Screen>
+        <Tab.Screen name={i18n.t("home")} component={Home}></Tab.Screen>
 
-        <Tab.Screen name="Register" component={Register}></Tab.Screen>
+        <Tab.Screen name={i18n.t("register")} component={Register}></Tab.Screen>
 
-        <Tab.Screen name="Listing" component={Listing}></Tab.Screen>
+        <Tab.Screen name={i18n.t("listing")} component={Listing}></Tab.Screen>
 
-        <Tab.Screen name="Recipe" component={RecipeDetail}></Tab.Screen>
+        <Tab.Screen name={i18n.t("recipe")} component={RecipeDetail}></Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );

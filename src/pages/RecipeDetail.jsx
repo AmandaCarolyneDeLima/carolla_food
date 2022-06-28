@@ -10,6 +10,9 @@ import React from "react";
 
 import bolo from "../../assets/bolo.webp";
 
+import i18n from "../services/lang";
+
+
 //----------------------------------------------------------------------------------------------------------------------//
 
 export default function RecipeDetail({ navigation, route }) {
@@ -26,14 +29,14 @@ export default function RecipeDetail({ navigation, route }) {
       <View style={styles.container}>
         <Text style={styles.id}>Id:{item.id}</Text>
         <Text style={styles.recipe}>{item.recipe}</Text>
-        <Text style={styles.ingredients}>Ingrendientes: {item.ingredients}</Text>
-        <Text style={styles.preparation}>Modo de preparo: {item.preparation}</Text>
+        <Text style={styles.ingredients}>{i18n.t("ingrendients")} {item.ingredients}</Text>
+        <Text style={styles.preparation}>{i18n.t("preparation")} {item.preparation}</Text>
         <Text style={styles.espaco}></Text>
         <Text style={styles.espaco}></Text>
 
         <Button
           style={styles.button}
-          title="Return"
+          title={i18n.t("buttonReturn")}
           onPress={returnToListing}
         />
       </View>
